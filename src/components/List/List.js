@@ -1,11 +1,13 @@
+import styles from './List.module.scss';
+
 const List = () => {
   return (
-    <div className="list">
-      <header className="header">
-        <h2 className="title">Things to do <span>soon</span></h2>
+    <div className={styles.list}>
+      <header className={styles.header}>
+        <h2 className={styles.title}>Things to do <span>soon</span></h2>
       </header>
-      <p className="description">Intresting things I want to chek out!</p>
-      <section className="colums">
+      <p className={styles.description}>Intresting things I want to chek out!</p>
+      <section className={styles.colums} class= "d-inline-block">
         <article>
           <h2>Books</h2>
         </article>
