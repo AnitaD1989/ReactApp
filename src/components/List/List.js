@@ -1,30 +1,24 @@
 import styles from './List.module.scss';
-import Column from '../Column/Column.js';
+import Column from './../Column/Column';
+import ColumnForm from './../ColumnForm/ColumnForm';
 import { useState } from 'react';
-import {shortid} from 'react';
+import {shortid} from 'shortid';
 
 const List = () => {
 
   const [columns, setColumns] = useState([
   	{ id: 1, title: 'Books', icon: 'book' },
     { id: 2, title: 'Movies', icon: 'film' },
-    { id: 3, title: 'Games', icon: 'gamepad' }
+    { id: 3, title: 'Game', icon: 'gamepad' }
   ]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    setColumns([...columns, { id: shortid(), title: value }]);
-    setValue('');
+  
+  const addColumn = newColumn  => {
+    setColumns([...columns, { id: shortid, title: newColumn }]);
   };
-
-  const [value, setValue] = useState('');
+  
 
   return (
     <div className={styles.list}>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange/>
-        <button>Add column</button>
-      </form>
       <header className={styles.header}>
         <h2 className={styles.title}>Things to do <span>soon</span></h2>
       </header>
@@ -33,6 +27,7 @@ const List = () => {
         {columns.map(column => 
           <Column key={column.id} title={column.title} icon={column.icon} />)}
       </section>
+      <ColumnForm action={addColumn}/>
     </div>
   );
 };
