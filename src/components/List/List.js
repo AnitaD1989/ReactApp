@@ -58,7 +58,7 @@ const List = () => {
       <p className={styles.description}>Intresting things I want to chek out!</p>
       <section className={styles.colums}>
         {columns.map(column => 
-          <Column key={column.id} title={column.title} icon={column.icon} cards={column.cards}/>)}
+          <Column key={column.id} id={column.id} title={column.title} icon={column.icon} cards={column.cards} addCard= {addCard}/>)}
       </section>
       <ColumnForm action={addColumn} />
       <CardForm action={addCard} />
