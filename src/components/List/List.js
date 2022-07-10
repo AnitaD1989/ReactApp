@@ -1,40 +1,15 @@
 import styles from './List.module.scss';
 import Column from './../Column/Column';
 import ColumnForm from './../ColumnForm/ColumnForm.js';
-import { useState } from 'react';
-import shortid from 'shortid';
 import CardForm from '../CardForm/CardForm';
+import { useSelector } from 'react-redux';
 
 const List = () => {
 
-  const [columns, setColumns] = useState([
-  	{ id: 1, 
-      title: 'Books', 
-      icon: 'book',
-      cards: [
-        { id: 1, title: 'This is Going to Hurt' },
-        { id: 2, title: 'Interpreter of Maladies' }
-      ]
-    },
-    { id: 2, 
-      title: 'Movies', 
-      icon: 'film',
-      cards: [
-        { id: 1, title: 'Harry Potter' },
-        { id: 2, title: 'Star Wars' }
-      ]
-    },
-    { id: 3, 
-      title: 'Game', 
-      icon: 'gamepad',
-      cards: [
-        { id: 1, title: 'The Witcher' },
-        { id: 2, title: 'Skyrim' }
-      ]
-    }
-  ]);
+  const columns = useSelector(state => state.columns);
   
-  const addColumn = newColumn  => {
+  
+  /*const addColumn = newColumn  => {
     setColumns([...columns, { id: shortid(), title: newColumn.title , icon: newColumn.icon, cards:[]}]);
   };
   
@@ -48,7 +23,7 @@ const List = () => {
   
     setColumns(columnsUpdated);
   
-  };
+  };*/
 
   return (
     <div className={styles.list}>
@@ -58,10 +33,10 @@ const List = () => {
       <p className={styles.description}>Intresting things I want to chek out!</p>
       <section className={styles.colums}>
         {columns.map(column => 
-          <Column key={column.id} id={column.id} title={column.title} icon={column.icon} cards={column.cards} addCard= {addCard}/>)}
+          <Column key={column.id} {...column}/>)}
       </section>
-      <ColumnForm action={addColumn} />
-      <CardForm action={addCard} />
+      <ColumnForm/>
+      <CardForm/>
     </div>
   );
 };
