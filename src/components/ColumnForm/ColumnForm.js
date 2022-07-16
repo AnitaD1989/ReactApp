@@ -10,7 +10,7 @@ const ColumnForm = props => {
   
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch({payload: 'ADD_COLUMN', newColumn: {title,icon }});
+    dispatch({type: 'ADD_COLUMN', payload: {title,icon }});
     setTitle('');
     setIcon('');
   }
