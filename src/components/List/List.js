@@ -3,10 +3,11 @@ import Column from './../Column/Column';
 import ColumnForm from './../ColumnForm/ColumnForm.js';
 import CardForm from '../CardForm/CardForm';
 import { useSelector } from 'react-redux';
+import { getAllColumns } from '../../redux/store.js';
 
 const List = () => {
 
-  const columns = useSelector(state => state.columns);
+  const columns = useSelector(getAllColumns);
   
   
   /*const addColumn = newColumn  => {
