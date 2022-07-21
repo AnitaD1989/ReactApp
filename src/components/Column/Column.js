@@ -9,6 +9,7 @@ const Column = props => {
   //const searchTerm = useSelector((state) => state.searchTerm);
   const cards = useSelector((state) => getFilteredCards(state, props.id));
   //const cards = useSelector((state) => state.cards).filter((card) => card.columnId === props.id && card.title?.toLowerCase().includes(searchTerm?.toLowerCase()));
+  console.log('Column render');
   
   return (
     <article className={styles.column}>

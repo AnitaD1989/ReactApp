@@ -1,5 +1,5 @@
 const strContains = (str, incl) => {
-  return str.toLowercase().includes(incl.toLowerCase());
+  return str.toLowerCase().includes(incl.toLowerCase());
 };
 
 export default strContains;
