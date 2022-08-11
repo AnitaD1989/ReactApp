@@ -32,7 +32,7 @@ const List = () => {
         <h2 className={styles.title}>Things to do <span>soon</span></h2>
       </header>
       <p className={styles.description}>Intresting things I want to chek out!</p>
-      <section className={styles.colums}>
+      <section className={styles.columns}>
         {columns.map(column => 
           <Column key={column.id} {...column}/>)}
       </section>
