@@ -13,7 +13,12 @@ export const updateSearchTerm = payload => ({ type:'UPDATE_SEARCHTERM', payload}
 export const getFilteredCards = ({ cards, searchTerm}, columnId) => cards
   .filter(card => card.columnId === columnId && strContains(card.title,searchTerm));
 
-export const getAllColumns = state => state.columns;
+//export const getAllColumns = state => state.columns;
+export const getColumnsByList = ({columns}, listId) => columns
+.filter((column) => column.listId === listId);
+export const getListById = ({lists}, listId) => lists.find(list => list.id === listId);
+export const getAllLists = state => state.lists;
+
 
 
 const reducer = (state, action) => {

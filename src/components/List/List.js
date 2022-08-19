@@ -3,12 +3,14 @@ import Column from './../Column/Column';
 import ColumnForm from './../ColumnForm/ColumnForm.js';
 import CardForm from '../CardForm/CardForm';
 import { useSelector } from 'react-redux';
-import { getAllColumns } from '../../redux/store.js';
+import { getColumnsByList, getListById } from '../../redux/store.js';
+import { useParams } from 'react-router';
+import SearchForm from '../SearchForm/SearchForm';
 
 const List = () => {
-
-  const columns = useSelector(getAllColumns);
-  
+  const {listId} = useParams();
+  const listData = useSelector(state => getListById(state, listId));
+  const columns = useSelector( state => getColumnsByList(state, listId));
   
   /*const addColumn = newColumn  => {
     setColumns([...columns, { id: shortid(), title: newColumn.title , icon: newColumn.icon, cards:[]}]);
@@ -29,15 +31,16 @@ const List = () => {
   return (
     <div className={styles.list}>
       <header className={styles.header}>
-        <h2 className={styles.title}>Things to do <span>soon</span></h2>
+        <h2 className={styles.title}>{listData.title}</h2>
       </header>
-      <p className={styles.description}>Intresting things I want to chek out!</p>
+      <p className={styles.description}>{listData.description}</p>
       <section className={styles.columns}>
-        {columns.map(column => 
-          <Column key={column.id} {...column}/>)}
+        {columns.map((column) => (
+          <Column key={column.id} column={column.id} {...column}/>))}
       </section>
-      <ColumnForm/>
+      <ColumnForm listId={listId}/>
       <CardForm/>
+      <SearchForm />
     </div>
   );
 };
