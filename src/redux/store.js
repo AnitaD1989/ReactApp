@@ -4,22 +4,25 @@ import initialState from './initialState';
 import strContains from '../utils/strContains';
 //import { createSelector } from 'reselect';
 
-// action creators
+
+// selectors
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 export const addCard = payload => ({type: 'ADD_CARD', payload});
 export const updateSearchTerm = payload => ({ type:'UPDATE_SEARCHTERM', payload});
 
-//selectors
+export const addList = payload => ({type: 'ADD_LIST', payload});
+
+//actions
 export const getFilteredCards = ({ cards, searchTerm}, columnId) => cards
   .filter(card => card.columnId === columnId && strContains(card.title,searchTerm));
 
-//export const getAllColumns = state => state.columns;
 export const getColumnsByList = ({columns}, listId) => columns
 .filter((column) => column.listId === listId);
 export const getListById = ({lists}, listId) => lists.find(list => list.id === listId);
 export const getAllLists = state => state.lists;
 
 
+//action creators
 
 const reducer = (state, action) => {
   switch(action.type ){
@@ -31,6 +34,9 @@ const reducer = (state, action) => {
     
     case 'UPDATE_SEARCHTERM':
       return {...state, searchTerm: action.payload};
+    
+    case 'ADD_LIST':
+      return {...state, lists: [...state.lists, {...action.payload, id:shortid()}]};
     
     default:
       return state;

@@ -2,6 +2,7 @@
 
 .navBar {
   background-color: darken($color-dark, 3%);
+  overflow: hidden;
 }
 
 .container {
@@ -9,13 +10,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   height: 60px;
+  margin-top: 0%;
 }
 
 .icon {
-  margin: 0 10px;
-  font-size: 30px;
+  margin: auto;
+  font-size: 40px !important;
+
 }
 
 .links {
@@ -24,6 +26,7 @@
   flex-direction: row;
   list-style-type: none;
   float: right;
+  font-size: 20px;
 }
 
 .link {
