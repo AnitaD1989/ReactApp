@@ -16,9 +16,9 @@ const Column = props => {
       <h2 className={styles.title}><span className={styles.icon + ' fa fa-' + props.icon}/>{props.title}</h2>
       <ul className={styles.cards}>
         {cards.map((card) => (
-          <Card key={card.id} columnId={card.columnId} title={card.title}/>))}
+          <Card key={card.id} columnId={card.columnId} title={card.title} isFavorite={card.isFavorite} id={card.id}/>))}
       </ul>
-      <CardForm columnId = {props.columnId}/>
+      <CardForm columnId = {props.id}/>
     </article>
   );
 };
