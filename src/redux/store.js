@@ -38,7 +38,7 @@ const reducer = (state, action) => {
     case 'ADD_LIST':
       return {...state, lists: [...state.lists, {...action.payload, id:shortid()}]};
     
-    case 'T0GGLE_CARD_FAVORITE':
+    case 'TOGGLE_CARD_FAVORITE':
       return { ...state, cards: state.cards.map(card => (card.id === action.payload.id) ? { ...card, isFavorite: !card.isFavorite } : card) };
 
     case 'DELETE_CARD':
