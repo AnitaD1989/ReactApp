@@ -8,7 +8,6 @@ import './styles/global.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import {BrowserRouter} from 'react-router-dom';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
